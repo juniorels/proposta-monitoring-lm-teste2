@@ -50,12 +50,22 @@ export default function PresentationPage() {
   const visibleSlides = slides.map((slide, index) => ({ ...slide, displayId: index + 1 }))
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev < visibleSlides.length - 1 ? prev + 1 : prev))
-  }, [visibleSlides.length])
+    console.log("[v0] nextSlide chamado, currentSlide:", currentSlide, "visibleSlides.length:", visibleSlides.length)
+    setCurrentSlide((prev) => {
+      const newSlide = prev < visibleSlides.length - 1 ? prev + 1 : prev
+      console.log("[v0] setCurrentSlide de", prev, "para", newSlide)
+      return newSlide
+    })
+  }, [visibleSlides.length, currentSlide])
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev))
-  }, [])
+    console.log("[v0] prevSlide chamado, currentSlide:", currentSlide)
+    setCurrentSlide((prev) => {
+      const newSlide = prev > 0 ? prev - 1 : prev
+      console.log("[v0] setCurrentSlide de", prev, "para", newSlide)
+      return newSlide
+    })
+  }, [currentSlide])
   
   const toggleHiddenSlides = () => {
     setShowHiddenSlides((prev) => !prev)
@@ -63,6 +73,7 @@ export default function PresentationPage() {
   }
 
   const goToSlide = (index: number) => {
+    console.log("[v0] goToSlide chamado com index:", index)
     setCurrentSlide(index)
   }
 
@@ -205,44 +216,49 @@ export default function PresentationPage() {
         )}
 
         {/* Slide Area */}
-        <main className="flex-1 flex items-center justify-center p-4 relative">
-          {/* Slide Container - 16:9 Aspect Ratio */}
-          <div
-            className={`relative bg-white rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ${
-              isFullscreen
-                ? "w-full h-full rounded-none"
-                : "w-full max-w-6xl aspect-video"
-            }`}
-          >
-            <CurrentSlideComponent />
+        <main className="flex-1 flex items-center justify-center p-4">
+          {/* Slide Container with Navigation - 16:9 Aspect Ratio */}
+          <div className="relative w-full max-w-6xl">
+            {/* Navigation Arrows - Outside the slide container */}
+            <button
+              type="button"
+              onClick={() => {
+                console.log("[v0] Clicou no botão anterior")
+                prevSlide()
+              }}
+              disabled={currentSlide === 0}
+              className={`absolute -left-16 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-black/50 text-white transition-all ${
+                currentSlide === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/70 hover:scale-110 cursor-pointer"
+              }`}
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                console.log("[v0] Clicou no botão próximo")
+                nextSlide()
+              }}
+              disabled={currentSlide === visibleSlides.length - 1}
+              className={`absolute -right-16 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-black/50 text-white transition-all ${
+                currentSlide === visibleSlides.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/70 hover:scale-110 cursor-pointer"
+              }`}
+            >
+              <ChevronRight className="w-8 h-8" />
+            </button>
+
+            {/* Slide Content */}
+            <div
+              className={`relative bg-white rounded-lg shadow-2xl overflow-hidden transition-all duration-300 ${
+                isFullscreen
+                  ? "w-full h-full rounded-none"
+                  : "w-full aspect-video"
+              }`}
+            >
+              <CurrentSlideComponent />
+            </div>
           </div>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              prevSlide()
-            }}
-            disabled={currentSlide === 0}
-            className={`absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-black/50 text-white transition-all ${
-              currentSlide === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/70 hover:scale-110"
-            }`}
-          >
-            <ChevronLeft className="w-8 h-8" />
-          </button>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              nextSlide()
-            }}
-            disabled={currentSlide === visibleSlides.length - 1}
-            className={`absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-black/50 text-white transition-all ${
-              currentSlide === visibleSlides.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/70 hover:scale-110"
-            }`}
-          >
-            <ChevronRight className="w-8 h-8" />
-          </button>
         </main>
       </div>
 
