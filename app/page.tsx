@@ -219,23 +219,29 @@ export default function PresentationPage() {
 
           {/* Navigation Arrows */}
           <button
-            onClick={prevSlide}
+            onClick={(e) => {
+              e.stopPropagation()
+              prevSlide()
+            }}
             disabled={currentSlide === 0}
-            className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/30 text-white transition-opacity ${
-              currentSlide === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/50"
+            className={`absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-black/50 text-white transition-all ${
+              currentSlide === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/70 hover:scale-110"
             }`}
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-8 h-8" />
           </button>
 
           <button
-            onClick={nextSlide}
+            onClick={(e) => {
+              e.stopPropagation()
+              nextSlide()
+            }}
             disabled={currentSlide === visibleSlides.length - 1}
-            className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/30 text-white transition-opacity ${
-              currentSlide === visibleSlides.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/50"
+            className={`absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-black/50 text-white transition-all ${
+              currentSlide === visibleSlides.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/70 hover:scale-110"
             }`}
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-8 h-8" />
           </button>
         </main>
       </div>
