@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { ChevronLeft, ChevronRight, Maximize2, PanelLeftClose, PanelLeft, Eye, EyeOff } from "lucide-react"
+import { ChevronLeft, ChevronRight, Maximize2, PanelLeftClose, PanelLeft, Eye, EyeOff, Download } from "lucide-react"
+import { exportToPptx } from "@/lib/export-pptx"
 import { Button } from "@/components/ui/button"
 import Slide1Capa from "@/components/slides/slide-1-capa"
 import Slide2POC from "@/components/slides/slide-2-poc"
@@ -80,6 +81,19 @@ export default function PresentationPage() {
     setIsSidebarOpen((prev) => !prev)
   }
 
+  const [isExporting, setIsExporting] = useState(false)
+
+  const handleExportPptx = async () => {
+    setIsExporting(true)
+    try {
+      await exportToPptx()
+    } catch (error) {
+      console.error("Erro ao exportar:", error)
+    } finally {
+      setIsExporting(false)
+    }
+  }
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight" || e.key === " ") {
@@ -128,6 +142,16 @@ export default function PresentationPage() {
             <span className="text-white/60 text-sm">
               {currentSlide + 1} / {visibleSlides.length}
             </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleExportPptx}
+              disabled={isExporting}
+              className="text-white/80 hover:text-white hover:bg-white/10 flex items-center gap-2"
+            >
+              <Download className="w-4 h-4" />
+              {isExporting ? "Exportando..." : "Baixar PPTX"}
+            </Button>
             <Button
               variant="ghost"
               size="sm"
