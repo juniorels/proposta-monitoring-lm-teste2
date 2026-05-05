@@ -72,7 +72,7 @@ export default function SlideResumo2Piramide() {
             <div className="bg-[#FFE600] rounded-full p-2 lg:p-3 shadow-lg">
               <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-[#1A1A2E]" />
             </div>
-            <p className="text-[#FFE600] text-[8px] lg:text-[10px] font-bold mt-1 lg:mt-2 uppercase">POC</p>
+            <p className="text-[#FFE600] text-[8px] lg:text-[10px] font-bold mt-1 lg:mt-2 uppercase"></p>
           </div>
 
           {/* TO BE - Pirâmide Invertida */}
