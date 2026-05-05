@@ -93,9 +93,7 @@ export default function Slide7Tarefas() {
                   <li>• Ambulâncias</li>
                 </ul>
               </div>
-              <div className="bg-white rounded-lg p-2 lg:p-3 border border-[#A5D6A7]">
-                <p className="text-[10px] sm:text-xs lg:text-sm text-[#333333]">Operação Meli EXTRA</p>
-              </div>
+
             </div>
           </div>
 
@@ -120,6 +118,9 @@ export default function Slide7Tarefas() {
               </div>
               <div className="bg-white rounded-lg p-2 lg:p-3 border border-[#90CAF9]">
                 <p className="text-[10px] sm:text-xs lg:text-sm text-[#333333]">Dashboard end-to-end → <span className="font-medium text-[#3483FA]"> Desde Gaiolas a RTS</span></p>
+              </div>
+              <div className="bg-white rounded-lg p-2 lg:p-3 border border-[#90CAF9]">
+                <p className="text-[10px] sm:text-xs lg:text-sm text-[#333333]">Operação Meli EXTRA</p>
               </div>
             </div>
           </div>
