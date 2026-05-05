@@ -104,81 +104,162 @@ export async function exportToPptx() {
   const slide2 = pptx.addSlide()
   slide2.background = { color: COLORS.white }
   
-  // Yellow border
-  slide2.addShape("rect", { x: 0, y: 0, w: "100%", h: 0.08, fill: { color: COLORS.yellow } })
-  
   // Header
   slide2.addText("A Jornada da CTM: De Centro Operacional para Torre de Inteligência", {
-    x: 0.4, y: 0.2, w: 9.2, h: 0.45,
-    fontSize: 20,
+    x: 0.3, y: 0.15, w: 9.4, h: 0.5,
+    fontSize: 22,
     bold: true,
     color: COLORS.dark
   })
   
-  // 5 columns
-  const colW = 1.8
-  const colGap = 0.1
-  const colStartX = 0.25
-  const colY = 0.75
-  const colH = 4.2
+  // 5 columns with improved styling
+  const colW = 1.82
+  const colGap = 0.08
+  const colStartX = 0.2
+  const colY = 0.7
+  const colH = 4.4
   
   const journeyColumns = [
-    { num: "1", title: "CONTEXTO", color: COLORS.gray, bg: "F5F5F5", items: ["CTM Atual: Monitoramento reativo", "Oportunidade: Delegar operacional aos MLPs", "POC validou: MLPs +0.30pp DS vs BAU"] },
-    { num: "2", title: "METAS", color: COLORS.blue, bg: "E3F2FD", items: ["DS Target: Manter ou melhorar DS", "Custo: Reduzir custo/entrega via dados", "Governança: Scorecard + feedback loop"] },
-    { num: "3", title: "SUCESSO POC", color: COLORS.green, bg: "E8F5E9", items: ["Grupo A (BAU): DS 97.2%", "Grupo B (MLP): DS 97.4% (+0.20pp)", "Grupo C (MLP+): DS 97.5% (+0.30pp)", "Melhor cenário: Grupo C"] },
-    { num: "4", title: "DECISÕES", color: COLORS.orange, bg: "FFF3E0", items: ["Delegar: Monitoreo LM, PNR, Coletas", "Reter: RTS, Sinistros, Ambulâncias", "Transformar: Análise → Inteligência LM"] },
-    { num: "5", title: "FERRAMENTAS", color: COLORS.pink, bg: "FCE4EC", items: ["Dashboard E2E: Gaiolas até RTS", "Scorecard MLP: Governança ativa", "Interface Roteirização: Feedback loop"] }
+    { 
+      num: "1", icon: "○", title: "CONTEXTO", color: COLORS.gray, bg: "FAFAFA", borderColor: "E0E0E0",
+      items: [
+        { title: "CTM Atual", desc: "Monitoramento reativo, foco no dia a dia", highlight: false },
+        { title: "Oportunidade", desc: "Delegar operacional aos MLPs libera espaço estratégico", highlight: false },
+        { title: "POC validou:", desc: "MLPs +0.30pp DS vs BAU", highlight: true, highlightColor: COLORS.green }
+      ]
+    },
+    { 
+      num: "2", icon: "◎", title: "METAS", color: COLORS.blue, bg: "EBF5FF", borderColor: COLORS.blue,
+      items: [
+        { title: "DS Target", desc: "Manter ou melhorar DS com delegação", highlight: false },
+        { title: "Custo", desc: "Reduzir custo/entrega via dados", highlight: false },
+        { title: "Governança", desc: "Scorecard + feedback loop", highlight: false }
+      ]
+    },
+    { 
+      num: "3", icon: "✓", title: "SUCESSO POC", color: COLORS.green, bg: "E8F5E9", borderColor: COLORS.green,
+      items: [
+        { title: "Grupo A (BAU)", desc: "DS 97.2% | MELI monitora", highlight: false },
+        { title: "Grupo B (MLP)", desc: "DS 97.4% | +0.20pp vs A", highlight: false },
+        { title: "Grupo C (MLP+)", desc: "DS 97.5% | +0.30pp vs A\nMelhor cenário", highlight: true, highlightColor: COLORS.green }
+      ]
+    },
+    { 
+      num: "4", icon: "⊘", title: "DECISÕES", color: COLORS.orange, bg: "FFF8F0", borderColor: COLORS.orange,
+      items: [
+        { title: "Delegar", desc: "Monitoreo LM, PNR, Coletas", highlight: false },
+        { title: "Reter", desc: "RTS, Sinistros, Ambulâncias", highlight: false },
+        { title: "Transformar", desc: "Análise → Inteligência LM", highlight: false }
+      ]
+    },
+    { 
+      num: "5", icon: "✦", title: "FERRAMENTAS", color: COLORS.pink, bg: "FFF0F5", borderColor: COLORS.pink,
+      items: [
+        { title: "Dashboard E2E", desc: "Gaiolas até RTS", highlight: false },
+        { title: "Scorecard MLP", desc: "Governança ativa", highlight: false },
+        { title: "Interface Roteirização", desc: "Feedback loop formal", highlight: false }
+      ]
+    }
   ]
   
   journeyColumns.forEach((col, i) => {
     const x = colStartX + i * (colW + colGap)
     
-    // Background
-    slide2.addShape("rect", { x, y: colY, w: colW, h: colH, fill: { color: col.bg } })
+    // Column background with rounded effect (using roundRect)
+    slide2.addShape("roundRect", { 
+      x, y: colY, w: colW, h: colH, 
+      fill: { color: col.bg },
+      line: { color: col.borderColor, width: 0.75 },
+      rectRadius: 0.08
+    })
     
-    // Top border
-    slide2.addShape("rect", { x, y: colY, w: colW, h: 0.06, fill: { color: col.color } })
+    // Top colored border (thick line)
+    slide2.addShape("rect", { x: x + 0.02, y: colY + 0.02, w: colW - 0.04, h: 0.08, fill: { color: col.color } })
     
-    // Number badge
+    // Number badge (circle)
+    slide2.addShape("ellipse", {
+      x: x + 0.08, y: colY + 0.18, w: 0.26, h: 0.26,
+      fill: { color: col.color }
+    })
     slide2.addText(col.num, {
-      x: x + 0.08, y: colY + 0.12, w: 0.28, h: 0.28,
-      fill: { color: col.color },
+      x: x + 0.08, y: colY + 0.18, w: 0.26, h: 0.26,
       color: COLORS.white,
-      fontSize: 10,
+      fontSize: 9,
       bold: true,
       align: "center",
       valign: "middle"
     })
     
-    // Title
-    slide2.addText(col.title, {
-      x: x + 0.4, y: colY + 0.12, w: colW - 0.5, h: 0.28,
-      fontSize: 8,
-      bold: true,
-      color: COLORS.dark
+    // Icon
+    slide2.addText(col.icon, {
+      x: x + 0.38, y: colY + 0.18, w: 0.2, h: 0.26,
+      color: col.color,
+      fontSize: 10,
+      valign: "middle"
     })
     
-    // Items
+    // Title
+    slide2.addText(col.title, {
+      x: x + 0.58, y: colY + 0.18, w: colW - 0.68, h: 0.26,
+      fontSize: 9,
+      bold: true,
+      color: COLORS.darkGray,
+      valign: "middle"
+    })
+    
+    // Items with better styling
     col.items.forEach((item, j) => {
-      slide2.addShape("rect", {
-        x: x + 0.06, y: colY + 0.5 + j * 0.75, w: colW - 0.12, h: 0.65,
-        fill: { color: COLORS.white },
-        line: { color: "E0E0E0", width: 0.5 }
-      })
-      slide2.addText(item, {
-        x: x + 0.1, y: colY + 0.55 + j * 0.75, w: colW - 0.2, h: 0.55,
-        fontSize: 7,
-        color: COLORS.darkGray
-      })
+      const itemY = colY + 0.55 + j * 0.95
+      const itemH = 0.85
+      
+      if (item.highlight && item.highlightColor) {
+        // Highlighted item with colored border
+        slide2.addShape("roundRect", {
+          x: x + 0.06, y: itemY, w: colW - 0.12, h: itemH,
+          fill: { color: item.highlightColor === COLORS.green ? "E8F5E9" : "FFFDE7" },
+          line: { color: item.highlightColor, width: 1.5 },
+          rectRadius: 0.05
+        })
+        slide2.addText(item.title, {
+          x: x + 0.12, y: itemY + 0.08, w: colW - 0.24, h: 0.22,
+          fontSize: 8,
+          bold: true,
+          color: item.highlightColor
+        })
+        slide2.addText(item.desc, {
+          x: x + 0.12, y: itemY + 0.32, w: colW - 0.24, h: 0.45,
+          fontSize: 8,
+          color: COLORS.darkGray
+        })
+      } else {
+        // Regular item
+        slide2.addShape("roundRect", {
+          x: x + 0.06, y: itemY, w: colW - 0.12, h: itemH,
+          fill: { color: COLORS.white },
+          line: { color: "E8E8E8", width: 0.5 },
+          rectRadius: 0.05
+        })
+        slide2.addText(item.title, {
+          x: x + 0.12, y: itemY + 0.08, w: colW - 0.24, h: 0.22,
+          fontSize: 8,
+          bold: true,
+          color: col.color
+        })
+        slide2.addText(item.desc, {
+          x: x + 0.12, y: itemY + 0.32, w: colW - 0.24, h: 0.45,
+          fontSize: 7,
+          color: COLORS.darkGray
+        })
+      }
     })
   })
   
-  // Flow arrows
+  // Flow arrows between columns
   for (let i = 0; i < 4; i++) {
-    const x = colStartX + (i + 1) * colW + i * colGap + colGap / 2
+    const x = colStartX + (i + 1) * colW + i * colGap + colGap / 2 - 0.02
     slide2.addText("→", {
-      x: x - 0.05, y: colY + colH / 2 - 0.15, w: colGap + 0.1, h: 0.3,
-      fontSize: 14,
+      x: x, y: colY + 1.5, w: 0.12, h: 0.3,
+      fontSize: 16,
       bold: true,
       color: COLORS.yellow,
       align: "center"
