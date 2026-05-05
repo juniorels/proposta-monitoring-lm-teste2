@@ -61,7 +61,7 @@ export default function SlideResumo2Piramide() {
               <div className="absolute -left-2 lg:-left-4 top-1/2 -translate-y-1/2">
                 <div className="flex flex-col items-center">
                   <AlertTriangle className="w-4 h-4 lg:w-5 lg:h-5 text-[#F44336]" style={{marginTop: "209px", marginRight: "62px", marginBottom: "-234px", marginLeft: "-11px", paddingBottom: "-95px", paddingTop: "-49px", paddingRight: "-14px", paddingLeft: "-23px"}} />
-                  <p className="text-[#F44336] text-[7px] lg:text-[8px] font-medium -rotate-90 origin-center whitespace-nowrap" style={{marginTop: "220px", marginBottom: "54px", marginRight: "-14px", paddingTop: "-41px", paddingBottom: "60px", paddingLeft: "-80px", paddingRight: "-85px"}}>INSUSTENTÁVEL</p>
+                  <p className="text-[#F44336] text-[7px] lg:text-[8px] font-medium -rotate-90 origin-center whitespace-nowrap" style={{marginTop: "220px", marginBottom: "81px", marginRight: "-14px", paddingTop: "-41px", paddingBottom: "89px", paddingLeft: "-80px", paddingRight: "-85px"}}>INSUSTENTÁVEL</p>
                 </div>
               </div>
             </div>
