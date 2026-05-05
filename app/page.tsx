@@ -19,23 +19,27 @@ import Slide12Roadmap from "@/components/slides/slide-12-roadmap"
 import Slide13Validacao from "@/components/slides/slide-13-validacao"
 import Slide14Impacto from "@/components/slides/slide-14-impacto"
 import Slide15ProximosPassos from "@/components/slides/slide-15-proximos-passos"
+import SlideResumo1 from "@/components/slides/slide-resumo-1"
+import SlideResumo2Piramide from "@/components/slides/slide-resumo-2-piramide"
 
 const allSlides = [
   { id: 1, component: Slide1Capa, title: "Capa", hidden: false },
-  { id: 2, component: Slide13Validacao, title: "Validação POC", hidden: false },
-  { id: 3, component: Slide2POC, title: "O POC", hidden: false },
-  { id: 4, component: Slide3Oportunidade, title: "A Oportunidade", hidden: false },
-  { id: 5, component: Slide4Missao, title: "Missão", hidden: false },
-  { id: 6, component: Slide5Frentes, title: "4 Frentes", hidden: false },
-  { id: 7, component: Slide6Roteirizacao, title: "Roteirização", hidden: false },
-  { id: 8, component: Slide7Tarefas, title: "Tarefas", hidden: false },
-  { id: 9, component: Slide8Stakeholders, title: "Stakeholders", hidden: false },
-  { id: 10, component: Slide9Produtos, title: "Produtos", hidden: false },
-  { id: 11, component: Slide10Rituais, title: "Rituais", hidden: false },
-  { id: 12, component: Slide11Estrutura, title: "Estrutura", hidden: false },
-  { id: 13, component: Slide12Roadmap, title: "Roadmap", hidden: true },
-  { id: 14, component: Slide14Impacto, title: "Impacto", hidden: false },
-  { id: 15, component: Slide15ProximosPassos, title: "Próximos Passos", hidden: false },
+  { id: 2, component: SlideResumo1, title: "Resumo: Jornada", hidden: false },
+  { id: 3, component: SlideResumo2Piramide, title: "Resumo: Pirâmide", hidden: false },
+  { id: 4, component: Slide13Validacao, title: "Validação POC", hidden: true },
+  { id: 5, component: Slide2POC, title: "O POC", hidden: true },
+  { id: 6, component: Slide3Oportunidade, title: "A Oportunidade", hidden: true },
+  { id: 7, component: Slide4Missao, title: "Missão", hidden: true },
+  { id: 8, component: Slide5Frentes, title: "4 Frentes", hidden: true },
+  { id: 9, component: Slide6Roteirizacao, title: "Roteirização", hidden: true },
+  { id: 10, component: Slide7Tarefas, title: "Tarefas", hidden: true },
+  { id: 11, component: Slide8Stakeholders, title: "Stakeholders", hidden: true },
+  { id: 12, component: Slide9Produtos, title: "Produtos", hidden: true },
+  { id: 13, component: Slide10Rituais, title: "Rituais", hidden: true },
+  { id: 14, component: Slide11Estrutura, title: "Estrutura", hidden: true },
+  { id: 15, component: Slide12Roadmap, title: "Roadmap", hidden: true },
+  { id: 16, component: Slide14Impacto, title: "Impacto", hidden: true },
+  { id: 17, component: Slide15ProximosPassos, title: "Próximos Passos", hidden: true },
 ]
 
 export default function PresentationPage() {
