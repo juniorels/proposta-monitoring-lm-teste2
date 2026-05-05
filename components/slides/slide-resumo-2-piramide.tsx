@@ -119,7 +119,7 @@ export default function SlideResumo2Piramide() {
               <div className="absolute -right-2 lg:-right-4 top-1/2 -translate-y-1/2">
                 <div className="flex flex-col items-center">
                   <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-[#00A650]" />
-                  <p className="text-[#00A650] text-[7px] lg:text-[8px] font-medium mt-0.5 rotate-90 origin-center whitespace-nowrap">ESCALÁVEL</p>
+                  <p className="text-[#00A650] text-[7px] lg:text-[8px] font-medium rotate-90 origin-center whitespace-nowrap" style={{marginTop: "66px", marginBottom: "-35px", marginLeft: "-117px", marginRight: "-132px", paddingBottom: "6px", paddingLeft: "104px"}}>ESCALÁVEL</p>
                 </div>
               </div>
             </div>
