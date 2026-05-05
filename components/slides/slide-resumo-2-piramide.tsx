@@ -21,7 +21,7 @@ export default function SlideResumo2Piramide() {
           {/* AS IS - Pirâmide Normal */}
           <div className="flex flex-col items-center">
             <h3 className="text-white/60 text-[10px] sm:text-xs lg:text-sm font-medium mb-2 lg:mb-4 uppercase tracking-wide">
-              Antes — CTM Operacional
+              AS IS — CTM Operacional
             </h3>
             
             <div className="relative w-full max-w-xs">
@@ -78,7 +78,7 @@ export default function SlideResumo2Piramide() {
           {/* TO BE - Pirâmide Invertida */}
           <div className="flex flex-col items-center">
             <h3 className="text-[#00A650] text-[10px] sm:text-xs lg:text-sm font-medium mb-2 lg:mb-4 uppercase tracking-wide">
-              Depois — CTM Inteligência
+              TO BE — CTM Inteligência
             </h3>
             
             <div className="relative w-full max-w-xs">
