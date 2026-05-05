@@ -65,28 +65,29 @@ export default function SlideResumo1() {
             </div>
           </div>
 
-          {/* 3. CRITÉRIOS DE SUCESSO */}
+          {/* 3. RESULTADO POC */}
           <div className="bg-[#E8F5E9] rounded-lg p-2 lg:p-3 flex flex-col border-t-4 border-[#00A650]">
             <div className="flex items-center gap-1.5 mb-2 lg:mb-3">
               <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[#00A650] rounded-full flex items-center justify-center text-white text-[10px] lg:text-xs font-bold">
                 3
               </div>
               <CheckCircle2 className="w-3 h-3 lg:w-4 lg:h-4 text-[#00A650]" />
-              <h3 className="font-bold text-[#333333] text-[10px] lg:text-xs">SUCESSO</h3>
+              <h3 className="font-bold text-[#333333] text-[10px] lg:text-xs">SUCESSO POC</h3>
             </div>
             
             <div className="space-y-1.5 lg:space-y-2 flex-1">
-              <div className="bg-white rounded p-1.5 lg:p-2 border border-[#A5D6A7]">
-                <p className="text-[8px] lg:text-[10px] text-[#00A650] font-bold">Alerta</p>
-                <p className="text-[8px] lg:text-[10px] text-[#333333]">DS B/C cai ≥1.5pp vs A (1 sem)</p>
+              <div className="bg-white rounded p-1.5 lg:p-2 border border-[#E0E0E0]">
+                <p className="text-[8px] lg:text-[10px] text-[#666666] font-medium">Grupo A (BAU)</p>
+                <p className="text-[8px] lg:text-[10px] text-[#333333]">DS 97.2% | MELI monitora</p>
               </div>
-              <div className="bg-white rounded p-1.5 lg:p-2 border border-[#A5D6A7]">
-                <p className="text-[8px] lg:text-[10px] text-[#FF9800] font-bold">Pausa</p>
-                <p className="text-[8px] lg:text-[10px] text-[#333333]">DS B/C cai ≥2pp vs A (2 sem)</p>
+              <div className="bg-white rounded p-1.5 lg:p-2 border border-[#FFE600]">
+                <p className="text-[8px] lg:text-[10px] text-[#666666] font-medium">Grupo B (MLP)</p>
+                <p className="text-[8px] lg:text-[10px] text-[#333333]">DS 97.4% | +0.20pp vs A</p>
               </div>
-              <div className="bg-white rounded p-1.5 lg:p-2 border border-[#A5D6A7]">
-                <p className="text-[8px] lg:text-[10px] text-[#F44336] font-bold">Stop</p>
-                <p className="text-[8px] lg:text-[10px] text-[#333333]">DS absoluto &lt; 95%</p>
+              <div className="bg-[#E8F5E9] rounded p-1.5 lg:p-2 border-2 border-[#00A650]">
+                <p className="text-[8px] lg:text-[10px] text-[#00A650] font-bold">Grupo C (MLP+)</p>
+                <p className="text-[8px] lg:text-[10px] text-[#333333] font-medium">DS 97.5% | +0.30pp vs A</p>
+                <p className="text-[8px] lg:text-[10px] text-[#00A650]">Melhor cenário</p>
               </div>
             </div>
           </div>
